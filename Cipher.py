@@ -19,7 +19,7 @@ class Cipher:
 
 	
 	def createKeyTable(self):
-		self.key_table = [[]] * Cipher.ROW
+		self.key_table = [[], [], [], [], []]
 		self.already_visited = {}
 		row, col = 0, 0
 		for c in self.key_phrase:
@@ -58,8 +58,8 @@ class Cipher:
 			encoded_x = self.key_table[row_x][(col_x + 1) % Cipher.COL]
 			encoded_y = self.key_table[row_y][(col_y + 1) % Cipher.COL]
 		elif col_x == col_y:
-			encoded_x = self.key_table[(row_x + 1) % Cipher.COL][col_x]
-			encoded_y = self.key_table[(row_y + 1) % Cipher.COL][col_y]
+			encoded_x = self.key_table[(row_x + 1) % Cipher.ROW][col_x]
+			encoded_y = self.key_table[(row_y + 1) % Cipher.ROW][col_y]
 		else:
 			encoded_x = self.key_table[row_x][col_y]
 			encoded_y = self.key_table[row_y][col_x]
